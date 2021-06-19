@@ -1,0 +1,2 @@
+link_buy:      //a[@href="/th/shop/goto/buy_iphone/iphone_12"]
+select_iphone12_mini:    //label[@id="0186cbb0-d142-11eb-b83f-df9434c3bece_label"]
