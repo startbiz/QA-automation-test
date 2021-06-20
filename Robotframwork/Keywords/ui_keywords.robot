@@ -3,8 +3,10 @@ add cart iphone and select storage and colour
      [Arguments]  ${color}   ${storage}
       click link buy iphone
       select iphone 12 type
+      Capture Page Screenshot    EMBED
       select color         ${color}
       select storage       ${storage}
+      Capture Page Screenshot    EMBED
       add to cart
       proceed product
 
@@ -56,38 +58,37 @@ verify your payment (ยอดชำระเงินของคุณ)
       ${price}     Get Substring     ${getprice}     1
      should be equal    ${price}     ${iphone_price}
 
-calculate price
-     [Arguments]     ${quantity}    ${iphone_price}
-     ${cal_price}=    Evaluate     ${quantity}*${iphone_price}
-      ${sum_price}=    Evaluate    "{:,.2f}".format(${cal_price})
-      sleep  3
-      Capture Page Screenshot    EMBED
-      [Return]    ${sum_price}
 
 click link buy iphone
       Wait Until Element Is Visible   //a[@href="/th/shop/goto/buy_iphone/iphone_12"]   60 seconds
+      sleep  3
       Click Element       //a[@href="/th/shop/goto/buy_iphone/iphone_12"]
       Capture Page Screenshot    EMBED
 
 select iphone 12 type
      Wait Until Element Is Visible       //div[@class="rc-dimension-selector-row form-selector"]/../..//*[text()="฿25,900"]   60 seconds
+     sleep  3
       click element      //div[@class="rc-dimension-selector-row form-selector"]/../..//*[text()="฿25,900"]
       Capture Page Screenshot    EMBED
 
 select color
      [Arguments]      ${colour}
      Wait Until Element Is Visible     //label[@class="form-selector-label"]/../../..//*[text()="${colour}"]    60 seconds
+     sleep  3
      click element    //label[@class="form-selector-label"]/../../..//*[text()="${colour}"]
 
 select storage
      [Arguments]      ${storage}
      Wait Until Element Is Visible     //div[@class="rc-dimension-multiple form-selector-threeline column large-6 small-6 form-selector"]/../../..//*[text()="${storage}"]   10 seconds
+     sleep  3
      click element    //div[@class="rc-dimension-multiple form-selector-threeline column large-6 small-6 form-selector"]/../../..//*[text()="${storage}"]
 
 add to cart
      Wait Until Element Is Visible   //button[@name="add-to-cart"]    60 seconds
+     sleep  3
     click button   //button[@name="add-to-cart"]
 
 proceed product
      Wait Until Element Is Visible    //button[@name="proceed"]     60 seconds
+     sleep  3
      click button     //button[@name="proceed"]
