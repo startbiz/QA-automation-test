@@ -2,8 +2,11 @@
 **Exam No.1-3**  
       >>> Path run file script :  FWD Test newman.postman_collection.json
                   -> api-get method no.1
+		  
                   -> api-post method no2.
+		  
                   -> api-Basic Authen  no.3
+		  
 
 **Exam No.4**  How to stop Newman when any assertion fails?
     Answer: use command --bail such as newman run  FWD\ Test\ newman.postman_collection.json  --bail
