@@ -18,7 +18,6 @@ Post request api
     Create Session  test    ${request_host}
     ${headers}=     Create Dictionary   Content-Type=${headers}[Content-Type]
     ${api response}=   Post Request    test      /posts       headers=${headers}    data=${body}
-#     Verify http status code    ${api response}    201
      [Return]      ${api response}
 
 Verify response header
