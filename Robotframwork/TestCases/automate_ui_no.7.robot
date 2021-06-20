@@ -14,7 +14,8 @@ TC001 Verify payment screen apple web
       add cart iphone and select storage and colour    ${colour}    ${storage}
       select quantity product     ${quantity}
       ${sum_price}    calculate price     ${quantity}        ${iphone_price}
-      verify price section (นี่คือรายการสินค้าที่อยู่ในถุงของคุณ+value)      ${sum_price}
+      verify header (นี่คือรายการสินค้าที่อยู่ในถุงของคุณ+value)      ${sum_price}
       verify item info (iPhone 12 mini ความจุ+value สี+value)      ${colour}       ${storage}
       verify item info price         ${sum_price}
       verify your payment (ยอดชำระเงินของคุณ)         ${sum_price}
+      verify vat (รวม VAT จำนวน)       ${iphone_price}

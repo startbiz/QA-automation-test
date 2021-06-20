@@ -15,7 +15,7 @@ select quantity product
       click element   //option[@value="${quantity}"]
       click element    //div[@id="bag-content"]
 
-verify price section (นี่คือรายการสินค้าที่อยู่ในถุงของคุณ+value)
+verify header (นี่คือรายการสินค้าที่อยู่ในถุงของคุณ+value)
       [Arguments]   ${expected_price}
       wait until element is visible    //div[@class="rs-bag-button-header large-12"]//h1
       ${get_text}   get text    //div[@class="rs-bag-button-header large-12"]//h1
@@ -39,6 +39,15 @@ verify item info price
       ${getprice}    get text      //div[@class="rs-iteminfo-price"]//p
       ${price}     Get Substring     ${getprice}     1
       should be equal    ${price}     ${iphone_price}
+
+verify vat (รวม VAT จำนวน)
+     [Arguments]     ${iphone_price}
+      Wait Until Element Is Visible      //div[@class="rs-tax-section"]
+      ${get_vat}    get text      //div[@class="rs-tax-section"]
+      ${temp}     Get Substring     ${get_vat}    15
+     ${cal_vat}    evaluate   ${iphone_price}*7/107
+     ${total_vat}=    Evaluate    "{:,.2f}".format(${cal_vat})
+     SHOULD BE EQUAL      ${total_vat}       ${temp}
 
 verify your payment (ยอดชำระเงินของคุณ)
       [Arguments]         ${iphone_price}
