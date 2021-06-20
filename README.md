@@ -1,6 +1,8 @@
 # QA-automation-test
 **Exam No.1-3**  
       >>> Path run file script :  FWD Test newman.postman_collection.json
+      
+      
                   -> api-get method no.1
 		  
                   -> api-post method no2.
