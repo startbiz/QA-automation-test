@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ${CURDIR}/../resource/import_ui.robot
-Test Teardown   Close All Browsers
+#Test Teardown   Close All Browsers
 *** Variables ***
 #input data
 ${quantity}      1
@@ -15,10 +15,10 @@ TC001 Verify payment screen apple web
       add cart iphone and select storage and colour    ${colour}    ${storage}
       select quantity product     ${quantity}
       ${cal_price}=    Evaluate     ${quantity}*${iphone_price}
-      ${sum_price}=    Evaluate    "{:,.2f}".format(round(${cal_price},5))
+      ${sum_price}=    Evaluate    "{:,.2f}".format(round(${cal_price}))
       sleep    2
       verify header (นี่คือรายการสินค้าที่อยู่ในถุงของคุณ+value)      ${sum_price}
       verify item info (iPhone 12 mini ความจุ+value สี+value)      ${colour}       ${storage}
       verify item info price         ${sum_price}
       verify your payment (ยอดชำระเงินของคุณ)         ${sum_price}
-      verify vat (รวม VAT จำนวน)        ${cal_price}
+

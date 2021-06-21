@@ -56,6 +56,7 @@ Verify data type id
            ${body_id}      Evaluate    type(${body}[${item}][id])
            ${expected_id}     Evaluate    type(${expected}[0][id])
            should be equal     ${body_id}     ${expected_id}
+           Exit For Loop IF     "${body_id}" == "${expected_id}"
      END
 
 Verify data type name
@@ -68,4 +69,5 @@ Verify data type name
            ${string_expected}=  Set Variable  ${expected}[0][name]
            ${expected_name}     Evaluate    type($string_expected)
            should be equal     ${body_name}     ${expected_name}
+           Exit For Loop IF     "${body_name}" == "${expected_name}"
      END

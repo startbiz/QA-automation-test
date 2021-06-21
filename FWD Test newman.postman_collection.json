@@ -9,36 +9,32 @@
 			"name": "api-get method_no.1",
 			"event": [
 				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {",
+							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Response time is more than 700ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(700);",
-							"});",
 							"",
 							"pm.test(\"Content-Type is present\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\");",
 							"});",
-							"",
 							"",
 							"var data = pm.response.json();",
 							"",
 							"pm.test('Verify length data size ' + data.length, function () {",
 							"    pm.expect(data.length).to.equal(200);",
 							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
 							""
 						],
 						"type": "text/javascript"
@@ -90,11 +86,12 @@
 							"});",
 							"",
 							"pm.test(\"Verify response headers\", function () {",
-							"    pm.response.to.have.header(\"Content-Length\");",
-							"    pm.response.to.have.header(\"Content-Type\");",
+							"    var jsonData = pm.response.json();",
+							"   pm.expect(jsonData.headers.Accept).equal(\"*/*\");",
+							"   pm.expect(jsonData.headers.Host).equal(\"httpbin.org\");",
 							"});",
 							"",
-							"pm.test(\"Verify response body data match with request body\", function () {",
+							"pm.test(\"Verify response body data match with request data\", function () {",
 							"   var jsonData = pm.response.json();",
 							"   pm.expect(jsonData.data).equal(\"Panida\\n\\n\");",
 							"});"
@@ -159,13 +156,13 @@
 					"type": "basic",
 					"basic": [
 						{
-							"key": "password",
-							"value": "pass",
+							"key": "username",
+							"value": "user",
 							"type": "string"
 						},
 						{
-							"key": "username",
-							"value": "user",
+							"key": "password",
+							"value": "pass",
 							"type": "string"
 						}
 					]
