@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ${CURDIR}/../resource/import_ui.robot
-#Test Teardown   Close All Browsers
+Test Teardown   Close All Browsers
 *** Variables ***
 #input data
 ${quantity}      1
